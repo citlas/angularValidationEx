@@ -1,0 +1,55 @@
+<div class="container w-50">
+<form class="m-5" [formGroup]="registerForm" (ngSubmit)="onSubmitForm()">
+      
+    <div class="form-group ">
+        <label for="inputName">First Name</label>
+        <input formControlName="customerName" type="text" class="form-control" id="inputName"  placeholder="Enter your name">
+        <div *ngIf="myForm.customerName.errors" class="errors">
+            <div *ngIf="myForm.customerName.errors.required">this is required!</div>
+            <div *ngIf="myForm.customerName.errors.minlength">Must be at least  {{myForm.customerName.errors.minlength.requiredLength}} letters!</div>
+        </div>
+        
+    </div>
+    
+    <div class="form-group">
+        <label for="inputLastName">Last name</label>
+        <input formControlName="lastName" type="text" class="form-control" id="inputLastName"  placeholder="Enter last name">
+        <div *ngIf="myForm.lastName.errors" class="errors">
+                <div *ngIf="myForm.lastName.errors.required">this is required!</div>
+            </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="customerEmail" type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email">
+      <div *ngIf="myForm.customerEmail.errors" class="errors">
+            <div *ngIf="myForm.customerEmail.errors.required">this is required!</div>
+            <div *ngIf="myForm.customerEmail.errors.email">Must be a valid email address!</div>
+            
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <div *ngIf="myForm.password.errors" class="errors">
+            <div *ngIf="myForm.password.errors.required">this is required!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword2">Password</label>
+        <input formControlName="repeatedPassword" type="password" class="form-control" id="exampleInputPassword2" placeholder="Repeat your Password">
+        <div *ngIf="myForm.repeatedPassword.errors" class="errors">
+                <div *ngIf="myForm.repeatedPassword.errors.required">this is required!</div>
+        </div>
+        <div *ngIf="registerForm.errors" class="errors">
+                <div *ngIf="registerForm.errors.mustMatch">passswords must match!</div>
+            </div>
+    </div>
+  
+   
+
+    <button class="btn btn-primary">Register</button>
+ 
+
+  </form>
+</div>
